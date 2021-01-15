@@ -12,6 +12,8 @@ public class Vetor {
         this.tamanho = 0;
     }
 
+
+
     public int getTamanho(){
         return tamanho;
     }
@@ -44,17 +46,33 @@ public class Vetor {
         return false;
     }
 
+
+    // Implementando um metodo para busca
+    public String busca(int posicao){
+        if (!(posicao >= 0 && posicao <tamanho)){
+            throw new IllegalArgumentException("Posicao inválida"); // Exception customizada
+        }
+        return this.elementos[posicao];
+
+/*        for(int x = 0; x <= posicao; x++){
+            if(this.elementos[x] != null){
+                return this.elementos[x];
+            }
+        }*/
+
+    }
+
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder();
         str.append("[ ");
-        for(int x = 0; x < this.tamanho ; x++){
+        for(int x = 0; x < this.tamanho-1 ; x++){
             str.append(this.elementos[x]);
             str.append(", ");
         }
 
         if(this.tamanho > 0){
-            str.append(this.elementos[this.tamanho]);
+            str.append(this.elementos[this.tamanho-1]);
         }
 
         str.append(" ]");
