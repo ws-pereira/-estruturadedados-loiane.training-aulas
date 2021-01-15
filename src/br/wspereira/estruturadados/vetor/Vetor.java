@@ -5,11 +5,15 @@ package br.wspereira.estruturadados.vetor;
 public class Vetor {
 
     private String[] elementos;
-    private int tamanhho;
+    private int tamanho;
 
     public Vetor(int capacidade) {
         this.elementos = new String[capacidade];
-        this.tamanhho = 0;
+        this.tamanho = 0;
+    }
+
+    public int getTamanho(){
+        return tamanho;
     }
 
     /* public void adiciona(String elemento){
@@ -27,17 +31,33 @@ public class Vetor {
             this.tamanhho++;
         }
         else {
-            throw new Exception("Vetor cheio, e não é possivel adiconar novo elemento.");
+            throw new Exception("Vetor cheio. Não é possivel adiconar novo elemento.");
         }
     }*/
 
-    public boolean adiciona(String elemento) throws Exception {
-        if(this.tamanhho < this.elementos.length){
-            this.elementos[this.tamanhho] = elemento;
-            this.tamanhho++;
+    public boolean adiciona(String elemento)  {
+        if(this.tamanho < this.elementos.length){
+            this.elementos[this.tamanho] = elemento;
+            this.tamanho++;
             return true;
         }
         return false;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder str = new StringBuilder();
+        str.append("[ ");
+        for(int x = 0; x < this.tamanho ; x++){
+            str.append(this.elementos[x]);
+            str.append(", ");
+        }
+
+        if(this.tamanho > 0){
+            str.append(this.elementos[this.tamanho]);
+        }
+
+        str.append(" ]");
+        return str.toString();
+    }
 }
